@@ -1,0 +1,41 @@
+<div class="container mt-3">
+    <h5 class="text-danger my-2">{{errorMsg}}</h5>
+
+    <h3>Accept / Reject Request</h3>
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Request Name</th>
+                <th>Cost</th>
+                <th>Description</th>
+                <th>User ID</th>
+                <th>Request Date</th>
+                <th>Receipt Img</th>
+            </tr>
+        </thead>
+        <tbody>
+
+            <tr *ngFor="let request of newRequest">
+                <td>{{ request.id }}</td>
+                <td>{{ request.reqName }}</td>
+                <td>{{ request.reqPrice}}</td>
+                <td>{{ request.reqDescription }}</td>
+                <td>{{request.usersId}}</td>
+                <td>{{request.reqDate | date: "MM/dd/yyyy"}}</td>
+                <td><img #myimg [src]="request.img" height="50px" width="80px" (click)="largeImg(myimg)" /></td>
+                <td>
+                    <button type="submit" mat-raised-button color="primary" (click)="approveRequest(request.id, request.usersId, 1)">
+
+                   Accept
+                </button>
+                </td>
+                <td>
+                    <button type="submit" mat-fab color="warn" mat-icon-rtl-mirror (click)="RejectRequest(request.id, request.usersId, 0)">
+                    reject
+                </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+
+<!-- ======= Top Bar ======= -->
+<section id="topbar" class="d-flex align-items-center">
+    <div class="container d-flex justify-content-center justify-content-md-between">
+        <div class="contact-info d-flex align-items-center">
+            <i class="bi bi-envelope d-flex align-items-center"><a routerLink="mailto:contact@example.com">contact@example.com</a></i>
+            <i class="bi bi-phone d-flex align-items-center ms-4"><span>+1 5589 55488 55</span></i>
+        </div>
+
+        <div class="cta d-none d-md-flex align-items-center" *ngIf="!retrieveIsLoggedIn()">
+            <a class="nav-link scrollto" routerLink="login" routerLinlActive="active">Login</a>
+        </div>
+        <div class="cta d-none d-md-flex align-items-center" *ngIf="retrieveIsLoggedIn()">
+            <a class="nav-link scrollto" routerLink="logout" routerLinlActive="active">Logout</a>
+        </div>
+    </div>
+</section>
+
+
+<!-- ======= Header ======= -->
+<header id="header" class="d-flex align-items-center">
+    <div class="container d-flex align-items-center justify-content-between">
+
+        <div class="logo">
+            <h1><a routerLink="index.html">SRC GROUP</a></h1>
+        </div>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <li class="nav-item">
+                    <a class="nav-link scrollto" routerLink="/home" routerLinlActive="active"> Home</a>
+                </li>
+                <li class="nav-item " *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'EMPLOYEE' ">
+                    <a class="nav-linkscrollto" routerLink="/request" routerLinlActive="active">Make Request</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'EMPLOYEE'   ">
+                    <a class="nav-link scrollto" routerLink="/user-pending-request" routerLinlActive="active">Pending Requests</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'EMPLOYEE'  ">
+                    <a class="nav-link scrollto" routerLink="/user-resolved-request" routerLinlActive="active">Resolved Requests</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'EMPLOYEE'  ">
+                    <a class="nav-link scrollto" routerLink="/user-profile" routerLinlActive="active">Profile</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'MANAGER'  ">
+                    <a class="nav-link scrollto" routerLink="/all-Pending-Request" routerLinlActive="active">Pending Requests</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'MANAGER' ">
+                    <a class="nav-link scrollto" routerLink="/all-resolved-request" routerLinlActive="active">Resolved Requests</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'MANAGER' ">
+                    <a class="nav-link scrollto" routerLink="/specific-request" routerLinlActive="active">Specific request</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'MANAGER' ">
+                    <a class="nav-link scrollto" routerLink="/approve-request" routerLinlActive="active">Approver request</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'MANAGER' ">
+                    <a class="nav-link scrollto" routerLink="/all-employee" routerLinlActive="active">All Employees</a>
+                </li>
+                <li class="nav-item" *ngIf="retrieveIsLoggedIn() && retrieveUserType() == 'MANAGER'">
+                    <a class="nav-link scrollto" routerLink="/signup" routerLinlActive="active">Registration</a>
+                </li>
+                <li class="nav-item" *ngIf="!retrieveIsLoggedIn()">
+                    <a class="nav-link scrollto" routerLink="Services">Services</a>
+                </li>
+                <li class="nav-item" *ngIf="!retrieveIsLoggedIn()">
+                    <a class="nav-link scrollto" routerLink="contact">Contact</a>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+        <!-- .navbar -->
+
+    </div>
+</header>
+<!-- End Header -->
